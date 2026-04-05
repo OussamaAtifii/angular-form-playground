@@ -1,0 +1,15 @@
+<section class="flex flex-col gap-6">
+  @for (field of fields(); track field.id) {
+    <app-field-renderer [field]="field" animate.enter="spring-in" />
+  }
+
+  <button
+    class="flex items-center justify-center gap-2 text-sm text-accent rounded-md py-3 font-bold font-mono uppercase border-2 border-dashed border-border-strong hover:text-accent-hover hover:border-accent hover:cursor-pointer transition-all duration-200 tracking-[0.15em]"
+    (click)="openDialog()"
+  >
+    <app-plus-icon />
+    Add_Field
+  </button>
+
+  <app-add-field-dialog />
+</section>

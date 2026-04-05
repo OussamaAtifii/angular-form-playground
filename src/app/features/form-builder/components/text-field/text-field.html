@@ -1,0 +1,25 @@
+<div class="relative">
+  <div
+    class="absolute inset-y-0 inset-s-0 flex items-center ps-3 pointer-events-none text-text-muted"
+  >
+    @switch (field().inputType) {
+      @case ('text') {
+        <app-text-size-icon class="size-4.5" />
+      }
+
+      @case ('email') {
+        <app-mail-icon class="size-4.5" />
+      }
+
+      @case ('number') {
+        <app-number-icon />
+      }
+    }
+  </div>
+  <input
+    [type]="field().inputType"
+    [id]="field().id"
+    class="bg-surface-muted border border-border-strong rounded-md text-sm text-text-base focus:ring-accent focus:border-accent block w-full ps-9 px-2.5 py-2 shadow-xs placeholder:text-text-subtle"
+    [placeholder]="placeholder()"
+  />
+</div>

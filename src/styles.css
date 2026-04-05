@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+  --color-background: #edf4f7;
+
+  --color-surface: #ffffff;
+  --color-surface-muted: #f4f8fa;
+
+  --color-border: #d6e4ec;
+  --color-border-strong: #b8cdd8;
+
+  --color-text-base: #1a2e38;
+  --color-text-muted: #4a6572;
+  --color-text-subtle: #7a9baa;
+
+  --color-accent: #2e7d9a;
+  --color-accent-hover: #235f75;
+  --color-accent-disabled: #a8c8d6;
+  --color-accent-disabled-text: #6e9aaa;
+
+  --font-sans: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+@keyframes spring-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(-8px);
+  }
+  50% {
+    transform: scale(1.03) translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.spring-in {
+  animation: spring-in 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}

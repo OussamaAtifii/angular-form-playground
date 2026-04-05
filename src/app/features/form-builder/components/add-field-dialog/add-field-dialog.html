@@ -1,0 +1,95 @@
+<dialog
+  #dialog
+  tabindex="-1"
+  class="fixed inset-0 m-auto w-[96%] sm:w-full max-w-lg rounded-md bg-surface p-6 shadow-2xl backdrop:bg-black/50 open:flex open:flex-col"
+>
+  <div class="flex justify-between items-center mb-6">
+    <p class="uppercase text-lg text-text-base font-bold font-mono leading-none tracking-tight">
+      add_new_field
+    </p>
+    <div
+      (click)="close()"
+      class="p-1 rounded-full hover:cursor-pointer hover:bg-accent-hover hover:text-white transition-colors duration-200"
+    >
+      <app-x-icon />
+    </div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="createField()" class="flex flex-col gap-6">
+    <div class="flex flex-col gap-2">
+      <p class="uppercase text-text-muted text-sm font-medium">field_type</p>
+      <ul class="grid w-full gap-4 sm:grid-cols-2">
+        @for (option of options(); track option.value) {
+          <li>
+            <input
+              type="radio"
+              [id]="option.value"
+              [value]="option.value"
+              formControlName="type"
+              class="sr-only peer"
+            />
+
+            <label
+              [for]="option.value"
+              class="inline-flex items-center justify-center gap-2 w-full p-3 font-medium border rounded-md cursor-pointer text-sm transition-colors bg-surface text-text-muted border-border hover:bg-surface-muted hover:border-border-strong peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent peer-checked:hover:bg-accent-hover"
+            >
+              @switch (option.value) {
+                @case ('text') {
+                  <app-text-size-icon />
+                }
+
+                @case ('number') {
+                  <app-number-icon />
+                }
+
+                @case ('email') {
+                  <app-mail-icon />
+                }
+
+                @case ('select') {
+                  <app-list-icon />
+                }
+              }
+
+              <div class="block">
+                <div class="w-full">{{ option.label }}</div>
+              </div>
+            </label>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label class="uppercase text-text-muted text-sm font-medium" for="field-label">
+        field_label
+      </label>
+      <input
+        id="field-label"
+        formControlName="label"
+        type="text"
+        class="bg-surface-muted border border-border-strong rounded-md text-sm text-text-base focus:ring-accent focus:border-accent block w-full px-2.5 py-2 shadow-xs placeholder:text-text-subtle"
+        placeholder="e.g. Full name"
+      />
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label class="uppercase text-text-muted text-sm font-medium"> field_placeholder </label>
+      <input
+        id="field-placeholder"
+        formControlName="placeholder"
+        type="text"
+        class="bg-surface-muted border border-border-strong rounded-md text-sm text-text-base focus:ring-accent focus:border-accent block w-full px-2.5 py-2 shadow-xs placeholder:text-text-subtle"
+        placeholder="e.g. Enter your full name"
+      />
+    </div>
+
+    <button
+      [disabled]="form.invalid"
+      type="submit"
+      class="w-full uppercase py-3.5 bg-accent rounded-md text-white font-semibold mt-6 hover:cursor-pointer hover:bg-accent-hover transition-colors duration-200 disabled:bg-accent-disabled disabled:text-accent-disabled-text disabled:cursor-not-allowed"
+    >
+      confirm_add
+    </button>
+  </form>
+</dialog>

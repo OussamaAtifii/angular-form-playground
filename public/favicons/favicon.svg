@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Background -->
+  <rect width="128" height="128" rx="20" fill="#1a2e38"/>
+  <!-- Header bar (accent) -->
+  <rect x="18" y="18" width="92" height="10" rx="2.5" fill="#2e7d9a"/>
+  <!-- Form field lines -->
+  <rect x="18" y="36" width="64" height="7" rx="2" fill="#243d4a"/>
+  <rect x="18" y="36" width="64" height="7" rx="2" fill="none" stroke="#2e7d9a" stroke-width="0.8"/>
+  <rect x="18" y="49" width="64" height="7" rx="2" fill="#243d4a"/>
+  <rect x="18" y="49" width="64" height="7" rx="2" fill="none" stroke="#2e7d9a" stroke-width="0.8"/>
+  <rect x="18" y="62" width="64" height="7" rx="2" fill="#243d4a"/>
+  <rect x="18" y="62" width="64" height="7" rx="2" fill="none" stroke="#2e7d9a" stroke-width="0.8"/>
+  <!-- Checkbox -->
+  <rect x="18" y="76" width="8" height="8" rx="1.5" fill="#243d4a" stroke="#2e7d9a" stroke-width="0.8"/>
+  <path d="M20 80 L22 83 L27 77" fill="none" stroke="#2e7d9a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="30" y="79" width="38" height="3" rx="1" fill="#243d4a"/>
+  <!-- Add field button (dashed) -->
+  <rect x="18" y="92" width="92" height="18" rx="3" fill="none" stroke="#2e7d9a" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <!-- Plus icon -->
+  <rect x="56" y="100" width="16" height="2" rx="1" fill="#2e7d9a"/>
+  <rect x="63" y="93" width="2" height="16" rx="1" fill="#2e7d9a"/>
+</svg>
