@@ -67,7 +67,6 @@ Adding a new field type means extending the base class - no conditionals, no sca
 
 ---
 
-<br>
-
+> [!IMPORTANT]
 > This project is a learning playground focused on applying OOP principles
 > in an Angular context. Not intended for production use.
