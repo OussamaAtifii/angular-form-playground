@@ -1,26 +1,26 @@
-import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
+import { Component, inject, signal, viewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FormBuilderService } from '@features/form-builder/services/form-builder-service';
-import { TextSizeIcon } from 'app/shared/icons/text-size-icon/text-size-icon';
-import { ListIcon } from 'app/shared/icons/list-icon/list-icon';
+import { FormBuilderService } from '@form-builder/services/form-builder-service';
+import { TextSizeIcon } from '@icons/text-size-icon/text-size-icon';
+import { ListIcon } from '@icons/list-icon/list-icon';
 import { FieldType } from '@core/types/field-type';
-import { MailIcon } from 'app/shared/icons/mail-icon/mail-icon';
-import { NumberIcon } from 'app/shared/icons/number-icon/number-icon';
-import { XIcon } from 'app/shared/icons/x-icon/x-icon';
+import { MailIcon } from '@icons/mail-icon/mail-icon';
+import { NumberIcon } from '@icons/number-icon/number-icon';
+import { Dialog } from '@shared/components/dialog/dialog';
 
 @Component({
   selector: 'app-add-field-dialog',
-  imports: [ReactiveFormsModule, TextSizeIcon, ListIcon, MailIcon, NumberIcon, XIcon],
+  imports: [ReactiveFormsModule, TextSizeIcon, ListIcon, MailIcon, NumberIcon, Dialog],
   templateUrl: './add-field-dialog.html',
 })
 export class AddFieldDialog {
   private formBuilder = inject(FormBuilder);
   private formBuilderService = inject(FormBuilderService);
 
-  dialog = viewChild<ElementRef<HTMLDialogElement>>('dialog');
+  dialog = viewChild<Dialog>(Dialog);
 
   form = this.formBuilder.group({
-    type: ['text'],
+    type: ['text', { nonNullable: true }],
     label: ['', [Validators.required]],
     placeholder: [''],
   });
@@ -32,13 +32,12 @@ export class AddFieldDialog {
   ]);
 
   open() {
-    this.dialog()?.nativeElement.showModal();
-    this.dialog()?.nativeElement.focus();
+    this.dialog()?.open();
   }
 
   close() {
     this.resetForm();
-    this.dialog()?.nativeElement.close();
+    this.dialog()?.close();
   }
 
   createField() {

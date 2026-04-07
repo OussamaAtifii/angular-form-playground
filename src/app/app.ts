@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FormBuilder } from '@features/form-builder/form-builder';
+import { FormBuilder } from '@form-builder/form-builder';
 
 @Component({
   selector: 'app-root',

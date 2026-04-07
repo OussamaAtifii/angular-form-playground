@@ -1,7 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { FieldFactory } from '@core/factories/field-factory';
 import { FormField } from '@core/models/form-field';
-import { TextField } from '@core/models/text-field';
 import { FieldType } from '@core/types/field-type';
 
 @Injectable({

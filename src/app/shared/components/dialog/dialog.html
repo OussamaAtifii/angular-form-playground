@@ -1,0 +1,21 @@
+<dialog
+  #dialog
+  tabindex="-1"
+  class="fixed inset-0 m-auto w-[96%] sm:w-full max-w-lg rounded-md bg-surface p-6 shadow-2xl backdrop:bg-black/50 open:flex open:flex-col"
+>
+  <div class="flex justify-between items-center mb-6">
+    @if (title()) {
+      <p class="uppercase text-lg text-text-base font-bold font-mono leading-none tracking-tight">
+        {{ title() }}
+      </p>
+    }
+    <div
+      (click)="close()"
+      class="p-1 rounded-full hover:cursor-pointer hover:bg-accent-hover hover:text-white transition-colors duration-200"
+    >
+      <app-x-icon />
+    </div>
+  </div>
+
+  <ng-content />
+</dialog>

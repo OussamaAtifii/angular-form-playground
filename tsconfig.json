@@ -17,8 +17,10 @@
     "baseUrl": "src",
     "paths": {
       "@core/*": ["app/core/*"],
+      "@form-builder/*": ["app/features/form-builder/*"],
       "@features/*": ["app/features/*"],
-      "@form-builder/*": ["app/features/form-builder/*"]
+      "@icons/*": ["app/shared/icons/*"],
+      "@shared/*": ["app/shared/*"]
     }
   },
   "angularCompilerOptions": {

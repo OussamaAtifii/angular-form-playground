@@ -1,15 +1,30 @@
 <section class="flex flex-col gap-6">
-  @for (field of fields(); track field.id) {
-    <app-field-renderer [field]="field" animate.enter="spring-in" />
-  }
+  <form [formGroup]="fieldsGroup" class="flex flex-col gap-6">
+    @for (field of fields(); track field.id) {
+      <app-field-renderer
+        [field]="field"
+        [control]="getControl(field.id)!"
+        animate.enter="spring-in"
+      />
+    }
+  </form>
 
   <button
-    class="flex items-center justify-center gap-2 text-sm text-accent rounded-md py-3 font-bold font-mono uppercase border-2 border-dashed border-border-strong hover:text-accent-hover hover:border-accent hover:cursor-pointer transition-all duration-200 tracking-[0.15em]"
     (click)="openDialog()"
+    class="w-full flex items-center justify-center gap-2 text-sm text-accent rounded-md py-3 font-bold font-mono uppercase border-2 border-dashed border-border-strong hover:text-accent-hover hover:border-accent hover:cursor-pointer transition-all duration-200 tracking-[0.15em]"
   >
     <app-plus-icon />
     Add_Field
   </button>
 
+  <button
+    (click)="showFormValues()"
+    class="w-full flex items-center justify-center gap-2 uppercase py-3.5 bg-accent rounded-md text-white text-sm font-bold hover:cursor-pointer hover:bg-accent-hover transition-colors duration-200 disabled:bg-accent-disabled disabled:text-accent-disabled-text disabled:cursor-not-allowed racking-[0.15em]"
+  >
+    <app-player-play-icon />
+    test_form
+  </button>
+
   <app-add-field-dialog />
+  <app-form-results-dialog [formData]="fieldsGroupValue" />
 </section>
