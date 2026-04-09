@@ -55,7 +55,15 @@ export class FormBuilder {
     return this.form.get('fields') as FormGroup;
   }
 
-  get fieldsGroupValue(): FormData {
+  getFieldsGroupValue() {
+    const formValue = this.fieldsGroup.value as FormData;
+
+    const test = Object.keys(formValue).map((valueKey) => ({
+      id: valueKey,
+      label: this.fields().find((field) => field.id === valueKey)?.label,
+      value: formValue[valueKey],
+    }));
+
     return this.fieldsGroup.value as FormData;
   }
 

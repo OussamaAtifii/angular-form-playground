@@ -1,10 +1,22 @@
 <app-dialog title="form_results">
-  <div class="flex flex-col gap-8">
-    @for (result of formData() | keyvalue; track $index) {
-      <div class="space-y-1">
-        <p class="uppercase text-text-muted text-xs font-medium">{{ result.key }}</p>
-        <p class="text-text-base text-sm font-medium">{{ result.value }}</p>
-      </div>
-    }
+  <div class="flex flex-col gap-6">
+    <div class="flex flex-col gap-4">
+      @for (result of formData() | keyvalue; track $index; let last = $last) {
+        <div>
+          <p class="uppercase text-text-muted text-xs font-medium">
+            {{ getFieldLabel(result.key) }}
+          </p>
+          <p class="text-text-base text-sm font-medium tracking-wide">{{ result.value }}</p>
+        </div>
+        <hr class="border-t border-border" />
+      }
+    </div>
+    <button
+      (click)="close()"
+      class="w-full flex items-center justify-center gap-2 uppercase py-3.5 bg-accent rounded-md mt-6 text-white text-sm font-bold hover:cursor-pointer hover:bg-accent-hover transition-colors duration-200 disabled:bg-accent-disabled disabled:text-accent-disabled-text disabled:cursor-not-allowed racking-[0.15em]"
+    >
+      <app-arrow-left />
+      back_to_editor
+    </button>
   </div>
 </app-dialog>
