@@ -1,4 +1,4 @@
-<app-dialog title="add_new_field">
+<app-dialog [title]="'add_new_field'">
   <form [formGroup]="form" (ngSubmit)="createField()" class="flex flex-col gap-6">
     <div class="flex flex-col gap-2">
       <p class="uppercase text-text-muted text-sm font-medium">field_type</p>
