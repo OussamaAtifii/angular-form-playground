@@ -8,4 +8,8 @@
   @if (textField()) {
     <app-text-field [field]="textField()!" [control]="control()" />
   }
+
+  @if (field().getType() === 'select') {
+    <app-select-field [field]="selectField()!" [control]="control()" />
+  }
 </div>

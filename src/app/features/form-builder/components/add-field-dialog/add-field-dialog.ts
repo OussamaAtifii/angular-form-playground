@@ -7,10 +7,11 @@ import { FieldType } from '@core/types/field-type';
 import { MailIcon } from '@icons/mail-icon/mail-icon';
 import { NumberIcon } from '@icons/number-icon/number-icon';
 import { Dialog } from '@shared/components/dialog/dialog';
+import { TrashIcon } from '@icons/trash-icon/trash-icon';
 
 @Component({
   selector: 'app-add-field-dialog',
-  imports: [ReactiveFormsModule, TextSizeIcon, ListIcon, MailIcon, NumberIcon, Dialog],
+  imports: [ReactiveFormsModule, TextSizeIcon, ListIcon, MailIcon, NumberIcon, Dialog, TrashIcon],
   templateUrl: './add-field-dialog.html',
 })
 export class AddFieldDialog {
@@ -22,14 +23,18 @@ export class AddFieldDialog {
   form = this.formBuilder.group({
     type: ['text', { nonNullable: true }],
     label: ['', [Validators.required]],
-    placeholder: [''],
+    placeholder: ['', Validators.required],
+    selectOption: [''],
   });
 
   options = signal<{ label: string; value: FieldType }[]>([
     { label: 'Text', value: 'text' },
     { label: 'Email', value: 'email' },
     { label: 'Number', value: 'number' },
+    { label: 'Select', value: 'select' },
   ]);
+
+  selectOptions = signal<string[]>([]);
 
   open() {
     this.dialog()?.open();
@@ -54,6 +59,17 @@ export class AddFieldDialog {
 
     this.resetForm();
     this.close();
+  }
+
+  addSelectOption() {
+    const control = this.form.get('selectOption');
+    const option = control?.value;
+
+    if (!option) return;
+
+    this.selectOptions.update((prev) => [option, ...prev]);
+    console.log(this.selectOptions());
+    control?.setValue('');
   }
 
   private resetForm() {

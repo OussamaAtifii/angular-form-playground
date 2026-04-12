@@ -15,6 +15,7 @@ export class FormBuilderService {
       FieldFactory.create('text', 'Username', 'Add your username'),
       FieldFactory.create('email', 'Email', 'Add your email'),
       FieldFactory.create('number', 'Age', 'Add your age'),
+      FieldFactory.create('select', 'Select', 'Select something'),
     ]);
   }
 
