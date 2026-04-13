@@ -8,6 +8,7 @@ import { MailIcon } from '@icons/mail-icon/mail-icon';
 import { NumberIcon } from '@icons/number-icon/number-icon';
 import { Dialog } from '@shared/components/dialog/dialog';
 import { TrashIcon } from '@icons/trash-icon/trash-icon';
+import { ToastService } from '@shared/services/toast-service';
 
 @Component({
   selector: 'app-add-field-dialog',
@@ -17,6 +18,7 @@ import { TrashIcon } from '@icons/trash-icon/trash-icon';
 export class AddFieldDialog {
   private formBuilder = inject(FormBuilder);
   private formBuilderService = inject(FormBuilderService);
+  private toast = inject(ToastService);
 
   dialog = viewChild<Dialog>(Dialog);
 
@@ -67,9 +69,19 @@ export class AddFieldDialog {
 
     if (!option) return;
 
+    if (this.selectOptions().find((value) => value.toLowerCase() === option.toLowerCase())) {
+      this.toast.info('This option already exists');
+      return;
+    }
+
     this.selectOptions.update((prev) => [option, ...prev]);
-    console.log(this.selectOptions());
     control?.setValue('');
+  }
+
+  removeSelectOption(option: string) {
+    if (!option || option.trim() === '') return;
+
+    this.selectOptions.update((prev) => prev.filter((opt) => opt !== option));
   }
 
   private resetForm() {

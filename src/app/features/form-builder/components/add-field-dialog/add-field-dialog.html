@@ -89,20 +89,27 @@
         </button>
       </div>
 
-      @if (!!selectOptions().length) {
-        <div class="flex flex-col gap-2 mt-2 border border-border p-2 rounded-md">
-          @for (option of selectOptions(); track $index) {
-            <div class="flex justify-between items-center px-3 py-2.5 bg-surface-muted rounded-md">
+      <div
+        class="flex flex-col gap-2 mt-2 border border-border p-2 rounded-md max-h-44 overflow-y-auto"
+        [class.hidden]="!selectOptions().length"
+      >
+        @for (option of selectOptions(); track option) {
+          <div
+            class="flex justify-between items-center px-3 py-2.5 bg-surface-muted rounded-md"
+            animate.leave="shake-out"
+          >
+            <div class="flex items-center justify-center gap-1">
               <p class="text-sm font-medium">{{ option }}</p>
-              <button
-                class="p-1 rounded-full text-text-base hover:cursor-pointer hover:bg-accent-hover hover:text-white transition-colors duration-200"
-              >
-                <app-trash-icon class="size-4.5" />
-              </button>
             </div>
-          }
-        </div>
-      }
+            <button
+              (click)="removeSelectOption(option)"
+              class="p-1 rounded-full text-text-base hover:cursor-pointer hover:bg-accent-hover hover:text-white transition-colors duration-200"
+            >
+              <app-trash-icon class="size-4.5" />
+            </button>
+          </div>
+        }
+      </div>
     </div>
 
     <button
