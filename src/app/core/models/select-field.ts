@@ -3,9 +3,9 @@ import { FormField } from './form-field';
 import { SelectOption } from '@core/types/select-option';
 
 export class SelectField extends FormField {
-  options: SelectOption[];
+  options: string[];
 
-  constructor(label: string, placeholder: string, options: SelectOption[]) {
+  constructor(label: string, placeholder: string, options: string[]) {
     super(label, placeholder);
     this.options = options;
   }

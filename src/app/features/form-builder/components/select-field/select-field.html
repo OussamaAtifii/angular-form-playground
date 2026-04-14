@@ -19,7 +19,7 @@
   >
     <option value="" disabled selected class="text-text-subtle">{{ field().placeholder }}</option>
     @for (option of field().options; track $index) {
-      <option [value]="option.value" class="text-text-base">{{ option.placeholder }}</option>
+      <option [value]="option" class="text-text-base">{{ option }}</option>
     }
   </select>
 </div>

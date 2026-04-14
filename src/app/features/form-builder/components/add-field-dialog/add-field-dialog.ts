@@ -9,6 +9,7 @@ import { NumberIcon } from '@icons/number-icon/number-icon';
 import { Dialog } from '@shared/components/dialog/dialog';
 import { TrashIcon } from '@icons/trash-icon/trash-icon';
 import { ToastService } from '@shared/services/toast-service';
+import { FieldConfig } from '@core/types/field-config';
 
 @Component({
   selector: 'app-add-field-dialog',
@@ -43,6 +44,7 @@ export class AddFieldDialog {
   }
 
   close() {
+    this.selectOptions.set([]);
     this.resetForm();
     this.dialog()?.close();
   }
@@ -57,9 +59,14 @@ export class AddFieldDialog {
 
     if (!type || !label || !placeholder) return;
 
-    this.formBuilderService.addField(type as FieldType, label, placeholder);
+    const config: FieldConfig = {
+      type: type as FieldType,
+      label,
+      placeholder,
+      options: this.selectOptions(),
+    };
 
-    this.resetForm();
+    this.formBuilderService.addField(config);
     this.close();
   }
 
@@ -76,6 +83,7 @@ export class AddFieldDialog {
 
     this.selectOptions.update((prev) => [option, ...prev]);
     control?.setValue('');
+    console.log(this.selectOptions());
   }
 
   removeSelectOption(option: string) {

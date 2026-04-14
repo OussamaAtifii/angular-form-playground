@@ -1,6 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { FieldFactory } from '@core/factories/field-factory';
 import { FormField } from '@core/models/form-field';
+import { FieldConfig } from '@core/types/field-config';
 import { FieldType } from '@core/types/field-type';
 
 @Injectable({
@@ -12,15 +13,17 @@ export class FormBuilderService {
 
   constructor() {
     this._fields.set([
-      FieldFactory.create('text', 'Username', 'Add your username'),
-      FieldFactory.create('email', 'Email', 'Add your email'),
-      FieldFactory.create('number', 'Age', 'Add your age'),
-      FieldFactory.create('select', 'Select', 'Select something'),
+      FieldFactory.text('Username', 'Add your username'),
+      FieldFactory.email('Email', 'Add your email'),
+      FieldFactory.number('Age', 'Add your age'),
     ]);
   }
 
-  addField(type: FieldType, label: string, placeholder: string) {
-    const field = FieldFactory.create(type, label, placeholder);
+  addField(config: FieldConfig) {
+    const field =
+      config.type === 'select'
+        ? FieldFactory.select(config.label, config.placeholder, config.options)
+        : FieldFactory[config.type](config.label, config.placeholder);
 
     this._fields.update((fields) => [...fields, field]);
   }
