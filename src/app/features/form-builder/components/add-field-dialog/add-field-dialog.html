@@ -80,6 +80,7 @@
             type="text"
             class="w-3/4 h-9.5 bg-surface-muted border border-border-strong rounded-md text-sm text-text-base focus:ring-accent focus:border-accent block px-2.5 py-2 shadow-xs placeholder:text-text-subtle"
             placeholder="Add option"
+            (keydown.enter)="$event.preventDefault(); addSelectOption()"
           />
           <button
             [disabled]="!form.get('selectOption')?.value"
