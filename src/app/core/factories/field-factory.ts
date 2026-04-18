@@ -1,7 +1,6 @@
-import { FieldType } from '@core/types/field-type';
-import { FormField } from '../models/form-field';
 import { TextField } from '../models/text-field';
 import { SelectField } from '@core/models/select-field';
+import { TextareaField } from '@core/models/textarea-field';
 
 export class FieldFactory {
   static text(label: string, placeholder: string) {
@@ -18,5 +17,9 @@ export class FieldFactory {
 
   static select(label: string, placeholder: string, options: string[]) {
     return new SelectField(label, placeholder, options);
+  }
+
+  static textarea(label: string, placeholder: string) {
+    return new TextareaField(label, placeholder);
   }
 }

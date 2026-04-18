@@ -10,10 +10,20 @@ import { Dialog } from '@shared/components/dialog/dialog';
 import { TrashIcon } from '@icons/trash-icon/trash-icon';
 import { ToastService } from '@shared/services/toast-service';
 import { FieldConfig } from '@core/types/field-config';
+import { TextCaptionIcon } from '@icons/text-caption-icon/text-caption-icon';
 
 @Component({
   selector: 'app-add-field-dialog',
-  imports: [ReactiveFormsModule, TextSizeIcon, ListIcon, MailIcon, NumberIcon, Dialog, TrashIcon],
+  imports: [
+    ReactiveFormsModule,
+    TextSizeIcon,
+    ListIcon,
+    MailIcon,
+    NumberIcon,
+    Dialog,
+    TrashIcon,
+    TextCaptionIcon,
+  ],
   templateUrl: './add-field-dialog.html',
 })
 export class AddFieldDialog {
@@ -34,6 +44,7 @@ export class AddFieldDialog {
     { label: 'Text', value: 'text' },
     { label: 'Email', value: 'email' },
     { label: 'Number', value: 'number' },
+    { label: 'Textarea', value: 'textarea' },
     { label: 'Select', value: 'select' },
   ]);
 

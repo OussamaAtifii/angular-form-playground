@@ -20,10 +20,26 @@ export class FormBuilderService {
   }
 
   addField(config: FieldConfig) {
-    const field =
-      config.type === 'select'
-        ? FieldFactory.select(config.label, config.placeholder, config.options)
-        : FieldFactory[config.type](config.label, config.placeholder);
+    let field: FormField;
+
+    switch (config.type) {
+      case 'text':
+      case 'email':
+      case 'number':
+        field = FieldFactory[config.type](config.label, config.placeholder);
+        break;
+
+      case 'select':
+        field = FieldFactory.select(config.label, config.placeholder, config.options);
+        break;
+
+      case 'textarea':
+        field = FieldFactory.textarea(config.label, config.placeholder);
+        break;
+
+      default:
+        break;
+    }
 
     this._fields.update((fields) => [...fields, field]);
   }

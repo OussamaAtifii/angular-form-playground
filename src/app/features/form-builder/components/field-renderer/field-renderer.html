@@ -9,7 +9,11 @@
     <app-text-field [field]="textField()!" [control]="control()" />
   }
 
-  @if (field().getType() === 'select') {
+  @if (selectField()) {
     <app-select-field [field]="selectField()!" [control]="control()" />
+  }
+
+  @if (textareaField()) {
+    <app-textarea-field [field]="textareaField()!" [control]="control()" />
   }
 </div>

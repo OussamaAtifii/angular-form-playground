@@ -1,0 +1,12 @@
+<div class="relative">
+  <div class="absolute inset-s-0 flex items-start ps-3 pt-2.5 pointer-events-none text-text-muted">
+    <app-text-caption-icon class="size-4.5" />
+  </div>
+  <textarea
+    [id]="field().id"
+    [formControl]="control()"
+    class="bg-surface-muted border border-border-strong rounded-md text-sm text-text-base focus:ring-accent focus:border-accent block w-full ps-9 px-2.5 py-2 shadow-xs placeholder:text-text-subtle resize-none"
+    [placeholder]="field().placeholder"
+    rows="4"
+  ></textarea>
+</div>
