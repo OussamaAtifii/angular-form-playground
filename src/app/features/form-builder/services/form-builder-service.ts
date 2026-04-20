@@ -26,6 +26,7 @@ export class FormBuilderService {
       case 'text':
       case 'email':
       case 'number':
+      case 'password':
         field = FieldFactory[config.type](config.label, config.placeholder);
         break;
 

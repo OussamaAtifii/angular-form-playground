@@ -15,6 +15,10 @@ export class FieldFactory {
     return new TextField(label, placeholder, 'number');
   }
 
+  static password(label: string, placeholder: string) {
+    return new TextField(label, placeholder, 'password');
+  }
+
   static select(label: string, placeholder: string, options: string[]) {
     return new SelectField(label, placeholder, options);
   }

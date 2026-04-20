@@ -5,6 +5,7 @@ import { MailIcon } from '@icons/mail-icon/mail-icon';
 import { NumberIcon } from '@icons/number-icon/number-icon';
 import { TextCaptionIcon } from '@icons/text-caption-icon/text-caption-icon';
 import { TextSizeIcon } from '@icons/text-size-icon/text-size-icon';
+import { UserKeyIcon } from '@icons/user-key-icon/user-key-icon';
 
 const FIELD_TYPE_MAP = {
   text: TextSizeIcon,
@@ -12,6 +13,7 @@ const FIELD_TYPE_MAP = {
   email: MailIcon,
   select: ListIcon,
   textarea: TextCaptionIcon,
+  password: UserKeyIcon,
 };
 
 type FieldType = keyof typeof FIELD_TYPE_MAP;

@@ -31,6 +31,7 @@ export class AddFieldDialog {
     { label: 'Text', value: 'text' },
     { label: 'Email', value: 'email' },
     { label: 'Number', value: 'number' },
+    { label: 'Password', value: 'password' },
     { label: 'Textarea', value: 'textarea' },
     { label: 'Select', value: 'select' },
   ]);
