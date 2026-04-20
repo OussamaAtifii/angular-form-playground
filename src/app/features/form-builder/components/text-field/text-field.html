@@ -2,19 +2,7 @@
   <div
     class="absolute inset-y-0 inset-s-0 flex items-center ps-3 pointer-events-none text-text-muted"
   >
-    @switch (field().inputType) {
-      @case ('text') {
-        <app-text-size-icon class="size-4.5" />
-      }
-
-      @case ('email') {
-        <app-mail-icon class="size-4.5" />
-      }
-
-      @case ('number') {
-        <app-number-icon />
-      }
-    }
+    <app-field-icon [type]="field().inputType" iconClass="size-4.5" />
   </div>
   <input
     [type]="field().inputType"

@@ -17,27 +17,7 @@
               [for]="option.value"
               class="inline-flex items-center justify-center gap-2 w-full p-3 font-medium border rounded-md cursor-pointer text-sm transition-colors bg-surface text-text-muted border-border hover:bg-surface-muted hover:border-border-strong peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent peer-checked:hover:bg-accent-hover"
             >
-              @switch (option.value) {
-                @case ('text') {
-                  <app-text-size-icon />
-                }
-
-                @case ('number') {
-                  <app-number-icon />
-                }
-
-                @case ('email') {
-                  <app-mail-icon />
-                }
-
-                @case ('select') {
-                  <app-list-icon />
-                }
-
-                @case ('textarea') {
-                  <app-text-caption-icon />
-                }
-              }
+              <app-field-icon [type]="option.value" iconClass="size-5" />
 
               <div class="block">
                 <div class="w-full">{{ option.label }}</div>
