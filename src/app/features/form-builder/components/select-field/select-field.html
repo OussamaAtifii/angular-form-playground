@@ -15,7 +15,7 @@
     [formControl]="control()"
     [class.text-text-subtle]="!control().value"
     [class.text-text-base]="control().value"
-    class="bg-surface-muted border border-border-strong rounded-md text-sm focus:ring-accent focus:border-accent block w-full ps-9 px-2.5 py-2 shadow-xs appearance-none"
+    class="bg-surface-muted border border-border-strong rounded-md text-sm focus:ring-3 focus:ring-accent focus:border-accent block w-full ps-9 px-2.5 py-2 shadow-xs appearance-none"
   >
     <option value="" disabled selected class="text-text-subtle">{{ field().placeholder }}</option>
     @for (option of field().options; track $index) {
