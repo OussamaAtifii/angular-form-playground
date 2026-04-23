@@ -4,7 +4,7 @@
       @for (result of formData() | keyvalue; track $index; let last = $last) {
         <div class="min-w-0">
           <p class="uppercase text-text-muted text-xs font-medium">
-            {{ fieldsLabelMap().get(result.key) }}
+            {{ fieldsLabelMap().get(result.key)?.label }}
           </p>
           <p
             class="wrap-break-word"
@@ -14,7 +14,16 @@
                 : 'text-text-subtle text-sm font-normal italic tracking-wide'
             "
           >
-            {{ result.value || 'This field has no value' }}
+            @if (fieldsLabelMap().get(result.key)?.type === 'email' && result.value) {
+              <div class="flex items-center gap-1 text-accent group">
+                <a class="hover:underline font-medium" [href]="'mailto:' + result.value">
+                  {{ result.value }}
+                </a>
+                <app-external-link class="size-4 group-hover:translate-x-px duration-200" />
+              </div>
+            } @else {
+              {{ 'This field has no value' }}
+            }
           </p>
         </div>
         <hr class="border-t border-border" />
